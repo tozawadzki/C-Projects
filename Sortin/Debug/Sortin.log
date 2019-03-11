@@ -1,2 +1,7 @@
-﻿  main.cpp
+﻿  Merge.cpp
+  main.cpp
+c:\users\toome\source\repos\sortin\sortin\main.cpp(29): warning C4101: 'I': unreferenced local variable
+c:\users\toome\source\repos\sortin\sortin\main.cpp(24): warning C4101: 'introTimeTable': unreferenced local variable
+c:\users\toome\source\repos\sortin\sortin\main.cpp(24): warning C4101: 'quickTimeTable': unreferenced local variable
+  Generating Code...
   Sortin.vcxproj -> C:\Users\toome\source\repos\Sortin\Debug\Sortin.exe

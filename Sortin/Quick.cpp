@@ -3,6 +3,25 @@
 #include <iostream>
 #include <cstdlib>
 
+void Quick::randomFill(int * tab, int size)
+{
+	for (int i = 0; i < size; i++)
+		tab[i] = rand() % size + 1;
+}
+
+void Quick::reverseFill(int * tab, int size)
+{
+	for (int i = 0; i < size; i++)
+		tab[i] = size - i;
+}
+
+
+void Quick::Display(int * tab, int size)
+{
+	for (int i = 0; i < size; i++)
+		std::cout << tab[i] << std::endl;
+}
+
 int Quick::Partition(int tab[], int p, int r)
 {
 	pivot = tab[p];

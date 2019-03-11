@@ -1,6 +1,24 @@
 #include "pch.h"
 #include "Merge.h"
 
+void Merge::randomFill(int * tab, int size)
+{
+	for (int i = 0; i < size; i++)
+		tab[i] = rand() % size + 1;
+}
+
+void Merge::reverseFill(int * tab, int size)
+{
+	for (int i = 0; i < size; i++)
+		tab[i] = size - i;
+}
+
+void Merge::Display(int * tab, int size)
+{
+	for (int i = 0; i < size; i++)
+		std::cout << tab[i] << std::endl;
+}
+
 void Merge::MergeSort(int tablica[], int start, int koniec)
 {
 	int srodek;

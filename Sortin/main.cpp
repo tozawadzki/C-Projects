@@ -18,69 +18,97 @@ using namespace std;
 
 int main()
 {
-	Timer timeMerge, timeIntro, timeQuick, timeBasic;
+	// Zmienne pomocnicze do zliczania czasu
+	Timer timeMerge, timeIntro, timeQuick;
+	// Tablice przechowuj¹ce czas posortowania
+	double introTimeTable[100], quickTimeTable[100], mergeTimeTable[100];
+	// Zmienne plikowe
 	fstream fileIntro, fileQuick, fileMerge;
 	Quick Q;
 	Merge M;
 	Intro I;
 	int size;
+	// Wyczyszczenie plików
+	fileIntro.open("IntroData.txt", ofstream::out | ofstream::trunc);
+	fileIntro.close();
+	fileQuick.open("QuickData.txt", ofstream::out | ofstream::trunc);
+	fileQuick.close();
+	fileMerge.open("MergeData.txt", ofstream::out | ofstream::trunc);
+	fileMerge.close();
+	
+	// Podanie rozmiaru
 	cout << "Podaj ilosc liczb do posortowania: ";
 	cin >> size;
 	int *tab = new int[size];
 
-	for (int i = 0; i < size; i++)
+	for (int i = 0; i < 100; i++)
 	{
-		tab[i] = rand() % size + 1;
+		M.randomFill(tab, size);
+		//M.MergeSort(tab, 0, 0.25*size);
+		//M.MergeSort(tab, 0, 0.5*size);
+		//M.MergeSort(tab, 0, 0.75*size);
+		//M.MergeSort(tab, 0, 0.95*size);
+		//M.MergeSort(tab, 0, 0.99*size);
+		//M.MergeSort(tab, 0, 0.997*size);
+		//M.reverseFill(tab, 0, size);
+		timeMerge.start();
+		M.MergeSort(tab, 0, size - 1);
+		timeMerge.stop();
+		mergeTimeTable[i] = timeMerge.getElapsedTime();
 	}
 	
-	timeMerge.start();
-	M.MergeSort(tab, 0, size-1);
-	timeMerge.stop();
-	cout << "Sortowanko Mergesort:" <<  timeMerge.getElapsedTime();
-	
-	for (int i = 0; i < size; i++)
+	/*
+	for (int i = 0; i < 100; i++)
 	{
-		tab[i] = rand() % size + 1;
+		Q.randomFill(tab, size);
+		//Q.QuickSort(tab, 0.25*size);
+		//Q.QuickSort(tab, 0.5*size);
+		//Q.QuickSort(tab, 0.75*size);
+		//Q.QuickSort(tab, 0.95*size);
+		//Q.QuickSort(tab, 0.99*size);
+		//Q.QuickSort(tab, 0.997*size);
+		//Q.reverseFill(tab, size);
+		timeQuick.start();
+		Q.QuickSort(tab, 0, size - 1);
+		timeQuick.stop();
+		quickTimeTable[i] = timeQuick.getElapsedTime();
 	}
 
-	timeQuick.start();
-	Q.QuickSort(tab, 0, size - 1);
-	timeQuick.stop();
-	cout << "\nSortowanko Quick:" << timeQuick.getElapsedTime();
-	
-
-	for (int i = 0; i < size; i++)
+	for (int i = 0; i < 100; i++)
 	{
-		tab[i] = rand() % size + 1;
-	}
-	
-	timeIntro.start();
-	I.IntroSort(tab, size - 1);
-	timeIntro.stop();
-	cout << "\nSortowanko Intro:" << timeIntro.getElapsedTime();
-
-	for (int i = 0; i < size; i++)
-	{
-		tab[i] = rand() % size + 1;
-	}
-
-	timeBasic.start();
-	sort(tab, tab+ size);
-	timeBasic.stop();
-	cout << "\nSortowanko zwykle:" << timeBasic.getElapsedTime();
-/*
-	for (int i = 0; i < size; i++)
-	{
-		cout << tab[i] << endl;
+		I.randomFill(tab, size);
+		timeIntro.start();
+		//I.IntroSort(tab, 0.25*size - 1);
+		//I.IntroSort(tab, 0.5*size - 1);
+		//I.IntroSort(tab, 0.75*size - 1);
+		//I.IntroSort(tab, 0.95*size - 1);
+		//I.IntroSort(tab, 0.99*size - 1);
+		//I.IntroSort(tab, 0.997*size - 1);
+		//I.reverseFill(tab, size);
+		I.IntroSort(tab, size - 1);
+		timeIntro.stop();
+		introTimeTable[i] = timeIntro.getElapsedTime();
 	}
 	*/
-	/*fileMerge.open("MergeData.txt", ios::out);
-		for (int i = 0; i < size; i++)
-			fileMerge << tab[i] << endl; 
+	
+	fileMerge.open("MergeData.txt");
+	for (int i = 0; i < size; i++)
+		fileMerge << mergeTimeTable[i] << endl;
+	fileMerge.close();
+	/*
+	fileQuick.open("QuickData.txt");
+	for (int i = 0; i < size; i++)
+		fileQuick << quickTimeTable[i] << endl;
+	fileQuick.close();
 
-			fileMerge.close();*/
+	fileIntro.open("IntroData.txt");
+	for (int i = 0; i < size; i++)
+		fileIntro << introTimeTable[i] << endl;
+	fileIntro.close();
+	*/
+	
 	delete[] tab;
-
+	
 	return 0;
 }
 

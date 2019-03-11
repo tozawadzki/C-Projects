@@ -1,6 +1,21 @@
 #include "pch.h"
 #include "Intro.h"
- int Intro::Partition(int* data, int left, int right) {
+void Intro::randomFill(int * tab, int size)
+{
+	for (int i = 0; i < size; i++)
+		tab[i] = rand() % size + 1;
+}
+void Intro::reverseFill(int * tab, int size)
+{
+	for (int i = 0; i < size; i++)
+		tab[i] = size - i;
+}
+void Intro::Display(int * tab, int size)
+{
+	for (int i = 0; i < size; i++)
+		std::cout << tab[i] << std::endl;
+}
+int Intro::Partition(int* data, int left, int right) {
 	int pivot = data[right];
 	int temp;
 	int i = left;
