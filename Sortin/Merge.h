@@ -10,7 +10,7 @@ public:
 	void randomFill(int *tab, int size);
 	void reverseFill(int *tab, int size);
 	void Display(int *tab, int size);
-	void MergeSort(int tablica[], int start, int koniec);
+	void MergeSort( int tablica[], int start, int koniec);
 	void MergeIt(int tablica[], int start, int srodek, int koniec);
 	Merge() {}
 };

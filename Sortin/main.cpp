@@ -40,10 +40,14 @@ int main()
 	cout << "Podaj ilosc liczb do posortowania: ";
 	cin >> size;
 	int *tab = new int[size];
-
+	
 	for (int i = 0; i < 100; i++)
 	{
 		M.randomFill(tab, size);
+		//Struktury dynamiczne
+		// Przygotowaæ wczesniej dame
+		// Puscic z pliku
+		
 		//M.MergeSort(tab, 0, 0.25*size);
 		//M.MergeSort(tab, 0, 0.5*size);
 		//M.MergeSort(tab, 0, 0.75*size);
@@ -56,6 +60,7 @@ int main()
 		timeMerge.stop();
 		mergeTimeTable[i] = timeMerge.getElapsedTime();
 	}
+	cout << "Merge gotowy" << endl;
 	
 	/*
 	for (int i = 0; i < 100; i++)
@@ -73,7 +78,8 @@ int main()
 		timeQuick.stop();
 		quickTimeTable[i] = timeQuick.getElapsedTime();
 	}
-
+	cout << "Quick gotowy" << endl;
+	
 	for (int i = 0; i < 100; i++)
 	{
 		I.randomFill(tab, size);
@@ -89,20 +95,24 @@ int main()
 		timeIntro.stop();
 		introTimeTable[i] = timeIntro.getElapsedTime();
 	}
+	cout << "Intro gotowy" << endl;
 	*/
 	
-	fileMerge.open("MergeData.txt");
-	for (int i = 0; i < size; i++)
+	fileMerge.open("MergeData.txt", ios::out);
+	for (int i = 0; i < 100; i++)
 		fileMerge << mergeTimeTable[i] << endl;
+	fileMerge << "Koniec" << endl;
 	fileMerge.close();
+	
 	/*
 	fileQuick.open("QuickData.txt");
-	for (int i = 0; i < size; i++)
+	for (int i = 0; i < 100; i++)
 		fileQuick << quickTimeTable[i] << endl;
 	fileQuick.close();
+	
 
 	fileIntro.open("IntroData.txt");
-	for (int i = 0; i < size; i++)
+	for (int i = 0; i < 100; i++)
 		fileIntro << introTimeTable[i] << endl;
 	fileIntro.close();
 	*/

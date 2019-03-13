@@ -41,7 +41,7 @@ void Merge::MergeSort(int tablica[], int start, int koniec)
 
 void Merge::MergeIt(int tablica[], int start, int srodek, int koniec)
 {
-	int *tab_pom = new int[(koniec - start)]; // utworzenie tablicy pomocniczej
+	int *tab_pom = new int[koniec - start + 1]; // utworzenie tablicy pomocniczej
 	int i = start, j = srodek + 1, k = 0; // zmienne pomocnicze
 
 	while (i <= srodek && j <= koniec)
@@ -80,49 +80,5 @@ void Merge::MergeIt(int tablica[], int start, int srodek, int koniec)
 
 	for (i = 0; i <= koniec - start; i++)
 		tablica[start + i] = tab_pom[i];
-
-	/*int *tab_tmp = new int[(end - start+1)];
-	int i = start;
-	int j = centre + 1;
-	int k = 0;
-
-	while (i <= centre && j <= end)
-	{
-
-		if (tab[j] <= tab[i])
-		{
-			tab_tmp[k] = tab[j];
-			j++;
-		}
-		else
-		{
-			tab_tmp[k] = tab[i];
-			i++;
-		}
-		k++;
-	}
-
-	if (i > centre)
-	{
-		for (int pom = j; pom <= end; pom++)
-		{
-			tab_tmp[k] = tab[i];
-			k++;
-		}
-	}
-	else
-	{
-		for (int pom = i; pom <= centre; pom++)
-		{
-			tab_tmp[k] = tab[pom];
-			k++;
-		}
-	}
-
-	for (int pom = 0; pom <= (end - start); pom++)
-	{
-		tab[pom + start] = tab_tmp[pom];
-	}
-	delete[] tab_tmp;*/
+	delete[] tab_pom;
 }
-
