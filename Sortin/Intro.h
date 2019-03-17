@@ -1,22 +1,24 @@
 #ifndef INTRO_H_HAS_BEEN_INCLUDED
 #define INTRO_H_HAS_BEEN_INCLUDED
-#include<iostream>
-#include<math.h>
-
+#include <iostream>
+#include <cstdlib>
+#include <time.h>
+#include <math.h>
+#include <set>
 // Sortowanie introspektywne
 // Przypadek ogólny - z³o¿onoœæ obliczeniowa O(nlog2n)
 class Intro
 {
 public:
-	void randomFill(int *tab, int size);
-	void reverseFill(int *tab, int size);
-	void Display(int *tab, int size);
-	 int Partition(int* data, int left, int right);
-	 void QuickSortRecursive(int* data, int left, int right);
-	 void MaxHeapify(int* data, int heapSize, int index);
-	 void HeapSort(int* data, int count);
-	 void InsertionSort(int* data, int count);
-	 void IntroSort(int* data, int count);
+	void randomFill(int * tab, int size);
+	void reverseFill(int * tab, int size);
+	void Display(int * tab, int size);
+	int Partition(int* data, int left, int right);
+	void QuickSortRecursive(int* data, int left, int right);
+	void MaxHeapify(int* data, int heapSize, int index);
+	void HeapSort(int* data, int count);
+	void InsertionSort(int* data, int count);
+	void IntroSort(int* data, int count);
 	/*
 		int pivot;
 	int save;

@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Intro.h"
+
 void Intro::randomFill(int * tab, int size)
 {
 	for (int i = 0; i < size; i++)
